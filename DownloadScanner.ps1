@@ -12,8 +12,10 @@ try{
 	New-Item -Path "$drive`:/Users/$user/virusScanner/" -Name "result.csv" -ItemType File
 }catch{Write-Host 'Error File already exists. Non fatal'}
 ##Vars
+## Time intervol needs to negative the length back it supposed to check so if you want it to check every thing downloaded 7 minutes before hand the $timeIntervol would be -7
+$timeIntervol = -5
 $checkTimeStamps = Get-Date;
-$checkTimeStamps = $checkTimeStamps.AddMinutes(-5)
+$checkTimeStamps = $checkTimeStamps.AddMinutes($timeIntervol);
 $downloads = (Get-ChildItem -Path "$drive`:/Users/$user/Downloads/" -Recurse | Where-Object {$_.PSIsContainer -eq $false -and $_.LastWriteTime -ge $checkTimeStamps}).FullName;
 $docs = Get-Content "$drive`:/Users/$user/virusScanner/downloads.csv";
 $counter = 0;
