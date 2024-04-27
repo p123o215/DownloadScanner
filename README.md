@@ -6,7 +6,7 @@ For this to run peirioticaly you have to set up a task in task scheduler to do t
 This code is designed to scan files downloaded in the last 5 minutes using Virus Total's API.  The code accomplishes this by pulling files, created in the last 5 minutes, from the user's download directory, hashing the files and then sending the hash to Virus Total API to check if the files are malicious. The API results are returned in a log file defined inside of the code.
 The checking of the files age can be adjusted from 5 minutes to a custom time by updating the `$timeInterval` variable. The variable has to be negative for example `$timeIntervol = -10` if you want the files within the last 10 minutes. The files are scanned 4 at a time as to not go over the set quota from Virus Total  This code was designed to be ran based on a schedule using task scheduler. Feel free to email me with any questions.
 
-![image](https://github.com/p123o215/DownloadScanner/assets/62272895/ef4bdb7f-8966-4f5f-9218-2da1f91596fb)
+![image](https://github.com/p123o215/DownloadScanner/assets/62272895/7745969e-ff19-4668-acfc-ce2d99eb48d1)
 
 (Set the Reapeat task every: to what ever you set the `$timeIntervol` var to be exept positive this time)
 
