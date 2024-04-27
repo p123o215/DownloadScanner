@@ -4,7 +4,7 @@ For example if you downloaded 7 files within 10 min and you changed the $timeInt
 For this to run peirioticaly you have to set up a task in task scheduler to do this go into task scheduler and 
 
 ![image](https://github.com/p123o215/DownloadScanner/assets/62272895/ef4bdb7f-8966-4f5f-9218-2da1f91596fb)
-
+(Set the Reapeat task every: to what ever you set the $Time intervol var to be)
 ![image](https://github.com/p123o215/DownloadScanner/assets/62272895/0a2d7e8c-f244-4961-9f80-256a764727cc)
 
 (Set the program/script in the action to be C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe Or the location of pwoershell and the add arguments to be teh location of the download scanner file)
