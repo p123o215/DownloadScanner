@@ -4,7 +4,7 @@ The checking of the files age can be adjusted from 5 minutes to a custom time by
 
 ![image](https://github.com/p123o215/DownloadScanner/assets/62272895/7745969e-ff19-4668-acfc-ce2d99eb48d1)
 
-(Set the Reapeat task every: to what ever you set the `$timeIntervol` var to be exept positive this time)
+(Set the Reapeat task every: to what ever you set the `$timeIntervol` var to be. Except positive this time)
 
 ![image](https://github.com/p123o215/DownloadScanner/assets/62272895/0a2d7e8c-f244-4961-9f80-256a764727cc)
 
