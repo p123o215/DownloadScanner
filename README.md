@@ -1,8 +1,4 @@
 # Users Download Directory Scanner
-This code is designed to scan recently downloaded files using Virus Total's API.
-For example if you downloaded 7 files within 10 min and you changed the `$timeIntervol` var to -10 then every file you downloaded within 10 minutes 
-For this to run peirioticaly you have to set up a task in task scheduler to do this go into task scheduler and follow the pictures, Again  
-
 This code is designed to scan files downloaded in the last 5 minutes using Virus Total's API.  The code accomplishes this by pulling files, created in the last 5 minutes, from the user's download directory, hashing the files and then sending the hash to Virus Total API to check if the files are malicious. The API results are returned in a log file defined inside of the code.
 The checking of the files age can be adjusted from 5 minutes to a custom time by updating the `$timeInterval` variable. The variable has to be negative for example `$timeIntervol = -10` if you want the files within the last 10 minutes. The files are scanned 4 at a time as to not go over the set quota from Virus Total  This code was designed to be ran based on a schedule using task scheduler. Feel free to email me with any questions.
 
