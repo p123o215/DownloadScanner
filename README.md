@@ -17,8 +17,8 @@ The checking of the files age can be adjusted from 5 minutes to a custom time by
 
 
 You will have to create a free account on Virus Total for an API key  which you will input on this line `$headers.Add("x-apikey", "YOUR API KEY HERE");`.
-\n
-#Notes
+
+# Notes
 THIS IS NOT MEANT TO REPLACE ANTI VIRUS.
 
 As shown in the license I am not liable for ANYTHING that this code is used for or that this code does.
