@@ -3,8 +3,7 @@
 ##Getting teh enviroment prepared
 $user = [Environment]::UserName;
 $drive = (Get-Location).Drive.Name;
-$checkDirPath = Test-Path C:\users\razor\cowbell2
-
+$checkDirPath = Test-Path "$drive`:/Users/$user/virusScanner/"
 if ($checkDirPath){
 	Write-Host "Already a folder"
 }else{
