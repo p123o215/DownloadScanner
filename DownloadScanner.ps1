@@ -1,16 +1,26 @@
-try{
-	## Creating the dir for the vius scanner
-	mkdir "$drive`:/Users/$user/virusScanner/";
-}catch{Write-Host "Already a folder"}
+## Downloads directory scanner using VirusTotals API
 
-##Getting things prepared
+##Getting teh enviroment prepared
 $user = [Environment]::UserName;
 $drive = (Get-Location).Drive.Name;
+$checkDirPath = Test-Path C:\users\razor\cowbell2
 
+if ($checkDirPath){
+	Write-Host "Already a folder"
+}else{
+	## Creating the dir for the virus scanner
+	mkdir "$drive`:/Users/$user/virusScanner/";
+ }
+
+## Creating the files neccisary for the code to function The results file and teh Downloads file
 try{
 	New-Item -Path "$drive`:/Users/$user/virusScanner/" -Name "downloads.csv" -ItemType File
 	New-Item -Path "$drive`:/Users/$user/virusScanner/" -Name "result.csv" -ItemType File
-}catch{Write-Host 'Error File already exists. Non fatal'}
+ 
+}catch{
+	Write-Host 'Error File already exists. Non fatal'
+ }
+ 
 ##Vars
 ## Time intervol needs to negative the length back it supposed to check so if you want it to check every thing downloaded 7 minutes before hand the $timeIntervol would be -7
 $timeIntervol = -5
@@ -52,9 +62,11 @@ foreach($file in $downloads){
 		Write-Output $file $response.data.attributes.total_votes >> "$drive`:/Users/$user/virusScanner/result.csv";
 		$response.data.attributes.total_votes;
 		
-	}catch{Write-Output "Unkown Hash from $file with the hash of, $hashHash" >> "$drive`:/Users/$user/virusScanner/result.csv"} 
+	}catch{
+ 		Write-Output "Unkown Hash from $file with the hash of, $hashHash" >> "$drive`:/Users/$user/virusScanner/result.csv"
+   	} 
 	
-	##Mkaing sure I dont go over Quota every minute
+	##Making sure I dont go over Quota every minute
 	$counter += 1;
 	
 	if($counter -ge 3){
@@ -64,7 +76,6 @@ foreach($file in $downloads){
 	
 	##Making sure I dont go over the daily quota
 	if($counterage -ge 300){
-	
-	$counterage = 0;
+		$counterage = 0;
 	}
 }
