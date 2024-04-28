@@ -1,11 +1,12 @@
 ## Downloads directory scanner using VirusTotals API
 
-##Getting teh enviroment prepared
+##Getting the enviroment prepared
 $user = [Environment]::UserName;
 $drive = (Get-Location).Drive.Name;
-$checkDirPath = Test-Path "$drive`:/Users/$user/virusScanner/"
+$checkDirPath = Test-Path "$drive`:/Users/$user/virusScanner/";
+
 if ($checkDirPath){
-	Write-Host "Already a folder"
+	Write-Host "Already a folder";
 }else{
 	## Creating the dir for the virus scanner
 	mkdir "$drive`:/Users/$user/virusScanner/";
@@ -13,16 +14,16 @@ if ($checkDirPath){
 
 ## Creating the files neccisary for the code to function The results file and teh Downloads file
 try{
-	New-Item -Path "$drive`:/Users/$user/virusScanner/" -Name "downloads.csv" -ItemType File
-	New-Item -Path "$drive`:/Users/$user/virusScanner/" -Name "result.csv" -ItemType File
+	New-Item -Path "$drive`:/Users/$user/virusScanner/" -Name "downloads.csv" -ItemType File;
+	New-Item -Path "$drive`:/Users/$user/virusScanner/" -Name "result.csv" -ItemType File;
  
 }catch{
-	Write-Host 'Error File already exists. Non fatal'
+	Write-Host 'Error File already exists. Non fatal';
  }
  
 ##Vars
 ## Time intervol needs to negative the length back it supposed to check so if you want it to check every thing downloaded 7 minutes before hand the $timeIntervol would be -7
-$timeIntervol = -5
+$timeIntervol = -5;
 $checkTimeStamps = Get-Date;
 $checkTimeStamps = $checkTimeStamps.AddMinutes($timeIntervol);
 $downloads = (Get-ChildItem -Path "$drive`:/Users/$user/Downloads/" -Recurse | Where-Object {$_.PSIsContainer -eq $false -and $_.LastWriteTime -ge $checkTimeStamps}).FullName;
@@ -36,9 +37,9 @@ foreach($file in $downloads){
 		echo "File already in downloads...";
 		continue;
 	}
-	$file
+	$file;
 	##adding fils in downloads to a file
-	Write-Output "$file" >> "$drive`:/Users/$user/virusScanner/downloads.csv"
+	Write-Output "$file" >> "$drive`:/Users/$user/virusScanner/downloads.csv";
 	
 	##Getting the has of each file
 	$hash = Get-FileHash $file;
@@ -54,7 +55,7 @@ foreach($file in $downloads){
 	
 	try{
 		##API calling
-		$response = Invoke-RestMethod -Uri $uri -Method GET -Headers $headers
+		$response = Invoke-RestMethod -Uri $uri -Method GET -Headers $headers;
 		$file;
 		
 		##Outing the result to a file and printing it
@@ -62,7 +63,7 @@ foreach($file in $downloads){
 		$response.data.attributes.total_votes;
 		
 	}catch{
- 		Write-Output "Unkown Hash from $file with the hash of, $hashHash" >> "$drive`:/Users/$user/virusScanner/result.csv"
+ 		Write-Output "Unkown Hash from $file with the hash of, $hashHash" >> "$drive`:/Users/$user/virusScanner/result.csv";
    	} 
 	
 	##Making sure I dont go over Quota every minute
