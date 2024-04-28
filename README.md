@@ -6,7 +6,8 @@ The checking of the files age can be adjusted from 5 minutes to a custom time by
 
 (Set the Reapeat task every: to what ever you set the `$timeIntervol` var to be. Except positive this time)
 
-![image](https://github.com/p123o215/DownloadScanner/assets/62272895/0a2d7e8c-f244-4961-9f80-256a764727cc)
+![image](https://github.com/p123o215/DownloadScanner/assets/62272895/66aa4167-9eef-461f-a535-98cbcef5a044)
+
 
 (Set the program/script in the action to be C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe Or the location of powershell and the add arguments to be teh location of the download scanner file)
 
